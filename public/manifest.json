@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Matrix & Stats Calculator",
+  "version": "1.1.0",
+  "description": "A local spreadsheet scratchpad with math, probability, hypothesis tests, matrices and regression.",
+  "minimum_chrome_version": "116",
+  "permissions": ["sidePanel"],
+  "action": {
+    "default_title": "Open Matrix & Stats Calculator sidebar",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      }
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

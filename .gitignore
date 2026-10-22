@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build-meta.json
+test-results/
+playwright-report/
+*.zip
+release/
+.source-cache/
+.DS_Store
+.publisher-notes/

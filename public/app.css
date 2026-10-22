@@ -1,0 +1,413 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  font:
+    13px Arial,
+    sans-serif;
+  color: #202124;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: white;
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+button,
+select {
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  padding: 4px 7px;
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  background: #eee;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+input {
+  border: 1px solid #bbb;
+  padding: 5px;
+  min-width: 0;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #1769c2;
+  outline-offset: 0;
+}
+header,
+nav,
+#formula-row,
+footer {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 5px 8px;
+  border-bottom: 1px solid #ccc;
+  flex-shrink: 0;
+}
+header strong {
+  font-size: 14px;
+}
+header #save-status {
+  margin-right: auto;
+  color: #666;
+  font-size: 11px;
+}
+nav {
+  flex-wrap: wrap;
+}
+nav label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+}
+#row-height {
+  width: 48px;
+  padding: 3px;
+}
+#address {
+  width: 108px;
+}
+#formula {
+  flex: 1;
+  font-family: ui-monospace, monospace;
+}
+#formula-row label {
+  color: #666;
+}
+#grid {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+  outline: none;
+  user-select: none;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+table {
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+th,
+td {
+  padding: 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  height: var(--row-height, 26px);
+  max-height: var(--row-height, 26px);
+  font-weight: normal;
+  background: #fff;
+  position: relative;
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+th {
+  background: #f3f3f3;
+  text-align: center;
+  color: #555;
+  user-select: none;
+}
+th.row-header,
+th.corner {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  width: 46px;
+}
+th.corner {
+  z-index: 5;
+}
+td.numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+td.error {
+  color: #b42318;
+}
+td.spill {
+  color: #355c8c;
+}
+td.selected {
+  background: #eaf2fc;
+}
+td.active {
+  box-shadow: inset 0 0 0 2px #1769c2;
+  background: #fff;
+}
+td.spacer,
+th.spacer {
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+}
+.resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 7px;
+  cursor: col-resize;
+}
+#editor {
+  position: fixed;
+  z-index: 7;
+  border: 2px solid #1769c2;
+  padding: 2px 4px;
+  font:
+    13px ui-monospace,
+    monospace;
+  background: white;
+  min-width: 100px;
+}
+footer {
+  border-top: 1px solid #ccc;
+  border-bottom: 0;
+  min-height: 36px;
+  flex-wrap: wrap;
+}
+#tabs {
+  display: flex;
+  gap: 3px;
+  overflow: auto;
+  max-width: 50%;
+}
+#tabs button[aria-selected="true"] {
+  border-bottom: 2px solid #1769c2;
+  font-weight: bold;
+}
+#selection-stats {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+#message {
+  min-height: 22px;
+  padding: 3px 8px;
+  color: #555;
+  font-size: 12px;
+  border-top: 1px solid #eee;
+}
+#message.error {
+  color: #b42318;
+}
+aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(380px, 95vw);
+  background: white;
+  border-left: 1px solid #aaa;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: -2px 0 6px #0001;
+}
+aside[hidden],
+input[hidden],
+button[hidden],
+div[hidden] {
+  display: none;
+}
+.panel-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.hint {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.4;
+}
+#function-list {
+  overflow: auto;
+  flex: 1;
+}
+#function-list button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  padding: 9px 3px;
+  border-radius: 0;
+}
+#function-list code {
+  display: block;
+  margin-bottom: 4px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  color: #124c85;
+}
+#function-list small {
+  line-height: 1.4;
+  display: block;
+  color: #555;
+}
+#function-list h3 {
+  font-size: 12px;
+  background: #eee;
+  padding: 5px;
+}
+dialog {
+  border: 1px solid #888;
+  max-width: 550px;
+  max-height: 85vh;
+  overflow: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+dialog h2 {
+  font-size: 16px;
+}
+dialog dt {
+  font-weight: bold;
+  margin-top: 8px;
+}
+dialog dd {
+  margin-left: 0;
+  color: #555;
+}
+#suggestions {
+  position: fixed;
+  z-index: 15;
+  background: white;
+  border: 1px solid #aaa;
+  max-height: 190px;
+  overflow: auto;
+  min-width: 220px;
+}
+#suggestions button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-radius: 0;
+  font-family: ui-monospace, monospace;
+}
+#suggestions button.chosen {
+  background: #eaf2fc;
+}
+
+#grid {
+  overflow-anchor: none;
+}
+
+/* Keep controls usable at Chrome's narrow side-panel widths. */
+header {
+  flex-wrap: wrap;
+}
+#message {
+  overflow-wrap: anywhere;
+  max-height: 90px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+@media (max-width: 480px) {
+  header,
+  nav,
+  #formula-row,
+  footer {
+    gap: 4px;
+    padding: 4px 6px;
+  }
+  header strong {
+    flex: 1 1 auto;
+  }
+  header #save-status {
+    order: 1;
+    flex-basis: 100%;
+  }
+  #address {
+    width: 78px;
+  }
+  #selection-stats {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+  #tabs {
+    max-width: 100%;
+  }
+}
+
+#workspace {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+#conflict {
+  padding: 8px;
+  border-bottom: 1px solid #aaa;
+  flex-shrink: 0;
+}
+#conflict p {
+  margin: 0 0 6px;
+}
+#conflict button {
+  margin: 2px 0;
+}
+
+#function-list .function-example {
+  margin-top: 5px;
+  font-family: monospace;
+  overflow-wrap: anywhere;
+}
+
+#formula-help {
+  flex-shrink: 0;
+  padding: 5px 8px;
+  border-bottom: 1px solid #ccc;
+  font:
+    12px/1.5 ui-monospace,
+    monospace;
+  overflow-wrap: anywhere;
+  height: 64px;
+  overflow-y: auto;
+  background: #fafafa;
+}
+.function-signature strong {
+  background: #dceafb;
+  color: #124c85;
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+.reference-label {
+  display: inline-block;
+  margin-right: 10px;
+}
+.reference-label.current-reference {
+  font-weight: bold;
+  text-decoration: underline;
+}
+td.formula-reference {
+  background: var(--reference-fill);
+}

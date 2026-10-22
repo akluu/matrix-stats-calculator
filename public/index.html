@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Matrix & Stats Calculator</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <div id="conflict" role="alert" hidden>
+      <p>
+        Another window changed this workbook. This view is paused to protect
+        your work.
+      </p>
+      <button id="conflict-backup">Save this view as backup</button>
+      <button id="save-draft" hidden>Save cell draft as text</button>
+      <button id="reload-latest">Reload latest</button>
+    </div>
+    <main id="workspace">
+      <header>
+        <strong>Matrix & Stats Calculator</strong
+        ><span id="save-status" role="status">Loading…</span
+        ><button id="functions">Functions</button
+        ><button id="help">Shortcuts</button>
+      </header>
+      <nav aria-label="Spreadsheet tools">
+        <button id="undo" title="Ctrl/Cmd+Z">Undo</button
+        ><button id="redo" title="Ctrl/Cmd+Shift+Z">Redo</button>
+        <button id="fill-down" title="Ctrl/Cmd+D">Fill down</button
+        ><button id="fill-right" title="Ctrl/Cmd+R">Fill right</button>
+        <button id="insert-row" title="Insert above the selected rows">
+          Insert rows above
+        </button>
+        <button id="delete-row" title="Delete the selected rows">
+          Delete rows
+        </button>
+        <button id="insert-col" title="Insert left of the selected columns">
+          Insert columns left
+        </button>
+        <button id="delete-col" title="Delete the selected columns">
+          Delete columns
+        </button>
+        <label
+          >Row height
+          <input
+            id="row-height"
+            type="number"
+            min="22"
+            max="80"
+            value="26"
+            aria-label="Row height"
+        /></label>
+        <button id="export">Save backup</button
+        ><button id="import">Open backup</button
+        ><input id="file" type="file" accept=".json" hidden />
+      </nav>
+      <div id="formula-row">
+        <input
+          id="address"
+          aria-label="Cell or range"
+          value="A1"
+          spellcheck="false"
+        /><label for="formula">fx</label
+        ><input
+          id="formula"
+          aria-label="Formula"
+          aria-describedby="formula-help"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Select a cell and type a value or =formula"
+        /><button id="apply" title="Apply formula">✓</button>
+      </div>
+      <div
+        id="formula-help"
+        aria-label="Formula arguments and references"
+        hidden
+      ></div>
+      <div id="grid" tabindex="0" aria-label="Spreadsheet cells">
+        <table role="grid" aria-rowcount="2000" aria-colcount="104">
+          <colgroup id="columns"></colgroup>
+          <thead id="head"></thead>
+          <tbody id="body"></tbody>
+        </table>
+      </div>
+      <input
+        id="editor"
+        aria-label="Edit cell"
+        aria-describedby="formula-help"
+        autocomplete="off"
+        spellcheck="false"
+        hidden
+      />
+      <div id="suggestions" role="listbox" hidden></div>
+      <footer>
+        <div id="tabs" aria-label="Sheets"></div>
+        <button id="new-sheet" title="New scratch sheet">+</button
+        ><button id="rename">Rename</button
+        ><button id="delete-sheet">Delete sheet</button
+        ><span id="selection-stats"></span>
+      </footer>
+      <div id="message" role="status"></div>
+      <aside id="function-panel" hidden>
+        <div class="panel-title">
+          <strong>Functions</strong><button id="close-functions">Close</button>
+        </div>
+        <input
+          id="function-search"
+          aria-label="Search functions"
+          placeholder="Search name or purpose"
+        />
+        <p class="hint">
+          Distributions: FALSE = density / mass; TRUE = cumulative probability.
+          Click a function to start a formula. [Brackets] mark optional
+          arguments. In examples, {1;2;3} is a column and {1,2,3} is a row.
+        </p>
+        <div id="function-list"></div>
+      </aside>
+      <dialog id="help-dialog">
+        <h2>Keyboard & selection</h2>
+        <p>
+          Click or drag to select. Shift-click extends a range. Ctrl/Cmd-click
+          adds another range. Click a row number or column letter to select it.
+        </p>
+        <dl>
+          <dt>Arrows · Tab · Enter</dt>
+          <dd>Move between cells. Shift reverses Tab / Enter.</dd>
+          <dt>Shift + arrows</dt>
+          <dd>Extend selection.</dd>
+          <dt>Ctrl/Cmd + arrows</dt>
+          <dd>Jump to an edge of a data region. Add Shift to select.</dd>
+          <dt>Ctrl/Cmd + A</dt>
+          <dd>Select the whole grid.</dd>
+          <dt>Ctrl + Space · Shift + Space</dt>
+          <dd>Select column · select row.</dd>
+          <dt>Ctrl/Cmd + C / X / V</dt>
+          <dd>
+            Copy / cut / paste. Internal copies adjust relative references;
+            external paste accepts tab-separated data.
+          </dd>
+          <dt>Ctrl/Cmd + D / R</dt>
+          <dd>Fill selection down / right from its first row / column.</dd>
+          <dt>Ctrl/Cmd + Z · Ctrl/Cmd + Shift + Z</dt>
+          <dd>Undo · redo.</dd>
+          <dt>F2 · double-click</dt>
+          <dd>Edit a cell. Escape cancels.</dd>
+          <dt>F4 while editing</dt>
+          <dd>Cycle A1 → $A$1 → A$1 → $A1.</dd>
+          <dt>Click / drag cells while entering a formula</dt>
+          <dd>Insert a cell or range reference.</dd>
+        </dl>
+        <p>
+          Drag the right edge of a column header to resize it. Use Row height
+          for taller cells. Selection totals appear below the grid.
+        </p>
+        <p>
+          Array results spill into empty cells. Edit their top-left formula.
+          LINEST’s stats flag must be literal TRUE or FALSE; redundant
+          predictors return #NUM! rather than Excel’s reduced fit.
+        </p>
+        <p>
+          Local storage only. Save a backup to keep a separate copy. Grid: 2,000
+          rows × 104 columns per sheet; up to 30 sheets.
+        </p>
+        <form method="dialog"><button>Close</button></form>
+      </dialog>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

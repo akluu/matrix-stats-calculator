@@ -1,0 +1,72 @@
+[
+  {
+    "name": "hyperformula",
+    "version": "3.5.0",
+    "commit": "99a45ea1d7ee88755607d8ae0153fb6d13efc36c",
+    "url": "https://codeload.github.com/handsontable/hyperformula/tar.gz/99a45ea1d7ee88755607d8ae0153fb6d13efc36c",
+    "sha256": "990db9b7975a2e4dd611bd18064ab4f23f847c200df5c1336f5bf8fb2e3a90e4"
+  },
+  {
+    "name": "jstat",
+    "version": "1.9.6",
+    "commit": "7c4d63ffdd9961f151aebc2ff78b3dc68c17143e",
+    "url": "https://codeload.github.com/jstat/jstat/tar.gz/7c4d63ffdd9961f151aebc2ff78b3dc68c17143e",
+    "sha256": "0dc1549c8652ccf481d830236394b2f8b2fa2e32dbf482f5a17205b1ad871afb"
+  },
+  {
+    "name": "ml-matrix",
+    "version": "6.15.1",
+    "commit": "da8f1f605ba315613f53de179cdb960b1bef5747",
+    "url": "https://codeload.github.com/mljs/matrix/tar.gz/da8f1f605ba315613f53de179cdb960b1bef5747",
+    "sha256": "58d6e200ba159da0ec9b27b0b2a450b437dd1c0895b2c2ff2e13fdea3008830b"
+  },
+  {
+    "name": "chevrotain",
+    "version": "6.5.0",
+    "commit": "d8593c78e919f8f03fce04c2c4860a3022af7e4f",
+    "url": "https://codeload.github.com/SAP/chevrotain/tar.gz/d8593c78e919f8f03fce04c2c4860a3022af7e4f",
+    "sha256": "5eb6d52e600b9a4bbdfd54d1755b81ac51b980ae3e58795c5fd423c356110537"
+  },
+  {
+    "name": "tiny-emitter",
+    "version": "2.1.0",
+    "commit": "a6026cc94da5d2d164104dd30586eee6bb4fb29c",
+    "url": "https://codeload.github.com/scottcorgan/tiny-emitter/tar.gz/a6026cc94da5d2d164104dd30586eee6bb4fb29c",
+    "sha256": "17c344f3d642770ddc6c4ab4eddc74e6fd0b7ac2a2e80bdfdf879d37d4ae3803"
+  },
+  {
+    "name": "is-any-array",
+    "version": "3.0.0",
+    "commit": "636aa9364dd8f4bd85394d08f2495260206a5762",
+    "url": "https://codeload.github.com/cheminfo-js/is-any-array/tar.gz/636aa9364dd8f4bd85394d08f2495260206a5762",
+    "sha256": "1fedf68be3e95812bcb9a4dc01fbbc0b2ccaf1bf935d6250d181f52372adf84c"
+  },
+  {
+    "name": "ml-array-rescale",
+    "version": "2.0.0",
+    "commit": "17f10d119716a8d6f4c8bb828d9fe0da8bf1c036",
+    "url": "https://codeload.github.com/mljs/array/tar.gz/17f10d119716a8d6f4c8bb828d9fe0da8bf1c036",
+    "sha256": "a8960e499680b2514ae88cd45518640fa5dcfa11a43026403f9123ad555780fb"
+  },
+  {
+    "name": "regexp-to-ast",
+    "version": "0.4.0",
+    "commit": "56f5c1f846ccb03acee167eed1fab35493b1d048",
+    "url": "https://codeload.github.com/bd82/regexp-to-ast/tar.gz/56f5c1f846ccb03acee167eed1fab35493b1d048",
+    "sha256": "5278740c6088d685234f9ac6f0bc29f59e3e9b98b9ef2fe88ff7d1f34298b466"
+  },
+  {
+    "name": "ml-array-max",
+    "version": "2.0.0",
+    "commit": "17f10d119716a8d6f4c8bb828d9fe0da8bf1c036",
+    "url": "https://codeload.github.com/mljs/array/tar.gz/17f10d119716a8d6f4c8bb828d9fe0da8bf1c036",
+    "sha256": "a8960e499680b2514ae88cd45518640fa5dcfa11a43026403f9123ad555780fb"
+  },
+  {
+    "name": "ml-array-min",
+    "version": "2.0.0",
+    "commit": "17f10d119716a8d6f4c8bb828d9fe0da8bf1c036",
+    "url": "https://codeload.github.com/mljs/array/tar.gz/17f10d119716a8d6f4c8bb828d9fe0da8bf1c036",
+    "sha256": "a8960e499680b2514ae88cd45518640fa5dcfa11a43026403f9123ad555780fb"
+  }
+]
